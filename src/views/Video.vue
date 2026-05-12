@@ -2,9 +2,10 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/api/http'
+import {VIDEO_BASE_URL} from '@/constants'
 
 const route = useRoute()
-const articleVideoBase = 'https://oss.littlestrange.site/conquer/articlevideo/'
+const articleVideoBase = VIDEO_BASE_URL
 const commentContent = ref('')
 const comments = ref([])
 

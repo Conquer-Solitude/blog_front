@@ -7,7 +7,7 @@ import FooterBar from '@/components/FooterBar.vue'
 import { IMAGE_BASE_URL } from '@/constants'
 
 const router = useRouter()
-
+const totalImages = ref(0)
 const showRegister = ref(false)
 const showLoginModal = ref(false)
 const email = ref('')
@@ -139,9 +139,15 @@ function switchToRegister() {
 function switchToLogin() {
   showRegister.value = false
 }
+async function getTotalImages() {
+  http.get('/api/totalImages').then((response) => {
+    totalImages.value = response.data.data
+  })
+}
 
 onMounted(() => {
   backgroundTimer = window.setInterval(rotateBackground, 8000)
+  // getTotalImages()
 })
 
 onBeforeUnmount(() => {

@@ -1,9 +1,10 @@
 ﻿<script setup>
-const avatarUrl = 'https://oss.littlestrange.site/conquer/image/avatar.jpg'
-const nameUrl = 'https://oss.littlestrange.site/conquer/image/name.png'
-const biliUrl = 'https://oss.littlestrange.site/conquer/image/bilibili.png'
-const githubUrl = 'https://oss.littlestrange.site/conquer/image/github.jpg'
-const giteeUrl = 'https://oss.littlestrange.site/conquer/image/gitee.jpg'
+import {IMAGE_BASE_URL} from '@/constants'
+const avatarUrl = IMAGE_BASE_URL + 'avatar.jpg'
+const nameUrl = IMAGE_BASE_URL + 'name.png'
+const bilibiliUrl = IMAGE_BASE_URL + 'bilibili.png'
+const githubUrl = IMAGE_BASE_URL + 'github.webp'
+const giteeUrl = IMAGE_BASE_URL+ 'gitee.png'
 
 function openBili() {
   window.open('https://space.bilibili.com/2012700921')
@@ -45,7 +46,7 @@ function openGithub() {
           <label class="about-navigation">---------我的个人导航---------</label>
         </li>
         <li class="about-self-link">
-          <div @click="openBili"><img :src="biliUrl" alt="正在加载中" /></div>
+          <div @click="openBili"><img :src="bilibiliUrl" alt="正在加载中" /></div>
           <div @click="openGitee"><img :src="giteeUrl" alt="正在加载中" /></div>
           <div @click="openGithub"><img :src="githubUrl" alt="正在加载中" /></div>
         </li>

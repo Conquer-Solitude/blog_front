@@ -1,10 +1,15 @@
 ﻿<script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { IMAGE_BASE_URL } from '@/constants'
 import http from '@/api/http'
 
-const articleCoverBase = 'https://oss.littlestrange.site/conquer/articlecover/'
-const avatarUrl = 'https://oss.littlestrange.site/conquer/image/avatar.jpg'
+const articleCoverBase = IMAGE_BASE_URL
+const avatarUrl = IMAGE_BASE_URL+'avatar.jpg'
+const giteeUrl = IMAGE_BASE_URL+'gitee.png'
+const githubUrl = IMAGE_BASE_URL+'github.webp'
+const steamUrl = IMAGE_BASE_URL+'steam.png'
+const changeUrl= IMAGE_BASE_URL+'change.jpg'
 const router = useRouter()
 
 const quote = ref('')
@@ -16,19 +21,39 @@ const currentTime = ref('')
 let timer = null
 
 async function fetchLatestArticles() {
-  const response = await http.get('api/article/latest')
-  latestArticles.value = response.data.data ?? []
+  try {
+    const response = await http.get('/api/article/latest')
+    latestArticles.value = response.data.data ?? []
+  } catch (error) {
+    console.error('Failed to fetch latest articles:', error)
+    latestArticles.value = []
+  }
 }
 
 async function fetchArticleCount() {
-  const response = await http.get('/api/article/nums')
-  articleCount.value = response.data.data ?? 0
+  try {
+    const response = await http.get('/api/article/nums')
+    articleCount.value = response.data.data ?? 0
+  } catch (error) {
+    console.error('Failed to fetch article count:', error)
+    articleCount.value = 0
+  }
 }
 
 async function fetchQuote() {
-  const response = await fetch('https://yy.kuailemao.xyz/?c=a&c=j&encode=json')
-  const data = await response.json()
-  quote.value = data.hitokoto ?? ''
+  try {
+    const response = await fetch('https://yy.kuailemao.xyz/?c=a&c=j&encode=json')
+    if (!response.ok) {
+      console.warn('Quote API unavailable, using fallback')
+      quote.value = '保持热爱，奔赴山海'
+      return
+    }
+    const data = await response.json()
+    quote.value = data.hitokoto ?? '保持热爱，奔赴山海'
+  } catch (error) {
+    console.warn('Failed to fetch quote:', error)
+    quote.value = '保持热爱，奔赴山海'
+  }
 }
 
 function updateClock() {
@@ -124,17 +149,17 @@ onBeforeUnmount(() => {
         </div>
         <div class="link">
           <a href="https://gitee.com/happy-state" target="_blank" rel="noreferrer">
-            <img src="https://oss.littlestrange.site/conquer/image/gitee.jpg" alt="码云" title="gitee" />
+            <img :src="giteeUrl" alt="码云" title="gitee" />
           </a>
           <a
             href="https://steamcommunity.com/profiles/76561199528374631/"
             target="_blank"
             rel="noreferrer"
           >
-            <img src="https://oss.littlestrange.site/conquer/image/steam.jpg" alt="steam" title="steam" />
+            <img :src="steamUrl" alt="steam" title="steam" />
           </a>
           <a href="https://github.com/Conquer-Solitude" target="_blank" rel="noreferrer">
-            <img src="https://oss.littlestrange.site/conquer/image/github.jpg" alt="github" title="github" />
+            <img :src="githubUrl" alt="github" title="github" />
           </a>
         </div>
       </li>
@@ -142,10 +167,10 @@ onBeforeUnmount(() => {
       <li class="inspirational">
         <span>每日鸡汤</span>
         <img
-          src="https://oss.littlestrange.site/conquer/image/huanyihuan.png"
+          :src="changeUrl"
           alt="换一换"
           title="换一换"
-          style="cursor: pointer"
+          class="refresh-icon"
           @click="fetchQuote"
         />
         <br />

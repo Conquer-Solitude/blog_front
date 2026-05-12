@@ -43,9 +43,11 @@ hr {
   margin: 0 auto;
   width: 1240px;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 2px 2px 20px 2px #000;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.3);
   display: flex;
+  position: relative;
+  z-index: 100;
 }
 
 .head h3 {
@@ -106,6 +108,7 @@ hr {
   border-radius: 50px;
   background-color: #fff;
   text-align: center;
+  z-index: 100;
 }
 
 .login:hover {
@@ -246,7 +249,7 @@ hr {
 .content {
   width: 900px;
   border-radius: 10px;
-  background-image: url(https://oss.littlestrange.site/conquer/image/picture.jpg);
+  background-image: url(https://pub-41822fd5bdc845a69bd37104e547c5ce.r2.dev/image/6.png);
 }
 
 .latest {
@@ -403,6 +406,14 @@ hr {
   font-size: 20px;
 }
 
+.inspirational .refresh-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
 .time {
   height: 144px;
 }
@@ -466,7 +477,7 @@ hr {
   width: 100%;
   height: 700px;
   border-radius: 10px;
-  background-image: url(https://oss.littlestrange.site/conquer/image/treehole.jpg);
+  background-image: url(https://pub-41822fd5bdc845a69bd37104e547c5ce.r2.dev/image/3.png);
   overflow: hidden;
 }
 
@@ -500,12 +511,13 @@ hr {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+/* 旧版 Message 样式 - 已弃用
 .liuyan {
   position: relative;
   width: 1024px;
   height: 512px;
   margin: 0 auto 10px;
-  background-image: url(https://oss.littlestrange.site/conquer/image/liuyanban.jpg);
+  background-image: url(https://pub-41822fd5bdc845a69bd37104e547c5ce.r2.dev/image/6.png);
 }
 
 .message {
@@ -565,6 +577,7 @@ hr {
   text-align: left;
   padding: 0 10px;
 }
+*/
 
 .articel-container {
   width: 1240px;
@@ -667,14 +680,53 @@ hr {
 .about-avatar {
   width: 300px;
   height: 300px;
-  margin: 160px 160px 30px;
+  margin: 160px auto 0;
   border-radius: 50%;
+  display: block;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.about-avatar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+.about-avatar-image {
+  text-align: center;
 }
 
 .about-name {
-  width: 300px;
-  margin-left: 130px;
-  margin-right: 160px;
+  width: 280px;
+  margin: 20px auto 0;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(245,245,245,0.9));
+  border-radius: 50px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.about-name:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.about-name img {
+  width: 100%;
+  height: 50px;
+  object-fit: cover;
+  display: block;
+  border-radius: 25px;
 }
 
 .about-introduce {

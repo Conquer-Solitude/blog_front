@@ -1,7 +1,7 @@
 ﻿<template>
   <div>
     <div class="footer">
-      <img src="https://oss.littlestrange.site/conquer/image/qq.jpg" alt="qq扫一扫" />
+      <img :src="qqUrl" alt="qq扫一扫" />
       <ul>
         <li><h2>@Conquer_Solitude</h2></li>
         <li>备案号：不告诉你</li>
@@ -15,3 +15,8 @@
     </div>
   </div>
 </template>
+<script setup>
+import { IMAGE_BASE_URL } from '@/constants'
+const qqUrl = IMAGE_BASE_URL + 'qq.jpg';
+console.log(qqUrl)
+</script>

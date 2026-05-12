@@ -2,9 +2,10 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import http from '@/api/http'
+import {IMAGE_BASE_URL} from '@/constants'
 
 const router = useRouter()
-const articleCoverBase = 'https://oss.littlestrange.site/conquer/articlecover/'
+const articleCoverBase = IMAGE_BASE_URL
 const items = ref([])
 
 async function fetchAll() {

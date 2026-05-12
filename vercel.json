@@ -4,5 +4,6 @@
       "source": "/api/:path*",
       "destination": "https://YOUR_RAILWAY_DOMAIN.up.railway.app/:path*"
     }
-  ]
+  ],
+  "comment": "部署前请把 YOUR_RAILWAY_DOMAIN 替换为 Railway 分配的实际域名（如 myblogbackend-production.up.railway.app）"
 }

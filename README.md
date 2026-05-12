@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# blog_front restored source project
 
 这个目录原本只有部署产物（`dist/`、`Dockerfile`、`nginx.conf`）。
@@ -69,3 +70,7 @@ npm run build:dist
 - 部分样式的排版细节
 - 构建前是否使用过更多工具链配置
 - 少量构建期丢失的源码注释与局部实现细节
+=======
+# blog_front
+博客前端
+>>>>>>> 793475de45d53ae9209a073b1bb9f5fd89e5be8a

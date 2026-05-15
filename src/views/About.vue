@@ -35,11 +35,11 @@ function openGithub() {
     <div class="about-right">
       <ul class="ul">
         <li class="about-introduce">
-          <h2 class="about-title">一名中二Web后端开发工程师</h2>
+          <h2 class="about-title">一名中二的后端开发工程师</h2>
           <p class="about-introduce-content">
-            千年以前，看见元婴强者自己的小世界，非常羡慕，于是心中立誓，我也要变强，后抛弃世间情爱，终踏上修仙一途，
-            虽一介散修，但亦往，经历千磨万难，炼气百年，四百年筑基，一千年结丹，两千年突破元婴，又一千年后遭遇瓶颈，
-            决心闭死关，四千年后的今日，终于突破化神，感叹回首沧桑，道不尽仙凡殊途，尽人间。
+            大家好我是 CoSolitude，一名后端程序员。
+            平日里热爱钻研算法、持续学习各类新技术，也喜欢用文字记录生活点滴。
+            业余时间喜欢玩 CS，闲暇之余习惯听歌放松，在代码、爱好与日常里慢慢成长，温柔且自律
           </p>
         </li>
         <li class="about-link">

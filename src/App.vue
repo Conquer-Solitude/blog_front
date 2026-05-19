@@ -91,7 +91,9 @@ async function sendCode() {
     return
   }
 
-  await http.post('/api/send', { email: email.value })
+  http.post('/api/send', { email: email.value }).then((response) => {
+    alert(response.data.data)
+  })
 
   countdown.value = 60
   countdownTimer = window.setInterval(() => {

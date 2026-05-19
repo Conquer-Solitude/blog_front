@@ -91,7 +91,7 @@ async function sendCode() {
     return
   }
 
-  http.post('/api/send', { email: email.value }).then((response) => {
+  await http.post('/api/send', { email: email.value }).then((response) => {
     alert(response.data.data)
   })
 

@@ -1,13 +1,14 @@
 ﻿<script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import http from '@/api/http'
 import ComponentHeader from '@/components/ComponentHeader.vue'
 import FooterBar from '@/components/FooterBar.vue'
 import { IMAGE_BASE_URL } from '@/constants'
 
 const router = useRouter()
-const totalImages = ref(0)
+const totalImages = ref([])
 const showRegister = ref(false)
 const showLoginModal = ref(false)
 const email = ref('')
@@ -56,13 +57,13 @@ async function handleLoginEntry() {
 
 async function login() {
   if (!/^[0-9]{9,12}@qq\.com$/.test(email.value)) {
-    alert('请输入正确的QQ邮箱')
+    ElMessage.warning('请输入正确的QQ邮箱')
     email.value = ''
     return
   }
 
   if (password.value.length < 6 || password.value.length > 20) {
-    alert('密码长度在6-20位之间')
+    ElMessage.warning('密码长度在6-20位之间')
     password.value = ''
     return
   }
@@ -73,53 +74,57 @@ async function login() {
       password: password.value,
     })
 
-    alert(response.data.msg)
+    ElMessage.success(response.data.msg)
     localStorage.setItem('userId', response.data.data.id)
     localStorage.setItem('userName', response.data.data.email)
     localStorage.setItem('token', response.data.data.jwt)
     location.reload()
   } catch (error) {
-    alert(error?.response?.data?.data ?? '登录失败')
+    ElMessage.error(error?.response?.data?.data ?? '登录失败')
     console.error(error)
   }
 }
 
 async function sendCode() {
   if (!/^[a-zA-Z0-9._%+-]+@qq\.com$/.test(email.value)) {
-    alert('请输入正确的QQ邮箱')
+    ElMessage.warning('请输入正确的QQ邮箱')
     email.value = ''
     return
   }
 
-  await http.post('/api/send', { email: email.value }).then((response) => {
-    alert(response.data.data)
-  })
+  try {
+    const response = await http.post('/api/send', { email: email.value })
+    ElMessage.success(response.data.data)
 
-  countdown.value = 60
-  countdownTimer = window.setInterval(() => {
-    if (countdown.value > 0) {
-      countdown.value -= 1
-    } else {
-      clearInterval(countdownTimer)
-      countdownTimer = null
-    }
-  }, 1000)
+    countdown.value = 60
+    countdownTimer = window.setInterval(() => {
+      if (countdown.value > 0) {
+        countdown.value -= 1
+      } else {
+        clearInterval(countdownTimer)
+        countdownTimer = null
+      }
+    }, 1000)
+  } catch (error) {
+    ElMessage.error(error?.response?.data?.data ?? '发送验证码失败，请稍后重试')
+    console.error(error)
+  }
 }
 
 async function register() {
   if (!/^[a-zA-Z0-9._%+-]+@qq\.com$/.test(email.value)) {
-    alert('请输入正确的QQ邮箱')
+    ElMessage.warning('请输入正确的QQ邮箱')
     return
   }
 
   if (password.value.length < 6 || password.value.length > 20) {
-    alert('密码长度在6-20位之间')
+    ElMessage.warning('密码长度在6-20位之间')
     password.value = ''
     return
   }
 
   if (code.value === '') {
-    alert('请输入你的邮箱验证码')
+    ElMessage.warning('请输入你的邮箱验证码')
     return
   }
 
@@ -129,7 +134,7 @@ async function register() {
     code: code.value,
   })
 
-  alert(response.data.data)
+  ElMessage.success(response.data.data)
   showRegister.value = false
 }
 
@@ -142,14 +147,15 @@ function switchToLogin() {
   showRegister.value = false
 }
 async function getTotalImages() {
-  http.get('/api/totalImages').then((response) => {
+  http.get('/api/background').then((response) => {
     totalImages.value = response.data.data
+    console.log(totalImages.value)
   })
 }
 
 onMounted(() => {
   backgroundTimer = window.setInterval(rotateBackground, 8000)
-  // getTotalImages()
+  getTotalImages()
 })
 
 onBeforeUnmount(() => {

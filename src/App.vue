@@ -34,6 +34,8 @@ function rotateBackground() {
   if (totalImages.value.length === 0) return
   const randomIndex = Math.floor(Math.random() * totalImages.value.length)
   backgroundIndex.value = totalImages.value[randomIndex].imageName
+  console.log(backgroundIndex.value)
+  console.log("backgroundImage"+backgroundImage)
 }
 
 function resetForm() {
@@ -154,6 +156,7 @@ async function getTotalImages() {
   if (totalImages.value.length > 0) {
     const randomIndex = Math.floor(Math.random() * totalImages.value.length)
     backgroundIndex.value = totalImages.value[randomIndex].imageName
+    console.log(backgroundIndex.value)
   }
 }
 

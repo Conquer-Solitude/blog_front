@@ -15,7 +15,7 @@ const email = ref('')
 const password = ref('')
 const code = ref('')
 const countdown = ref(0)
-const backgroundIndex = ref(Math.floor(Math.random() * 32))
+const backgroundIndex = ref('2.png')
 
 let backgroundTimer = null
 let countdownTimer = null
@@ -26,12 +26,14 @@ const loginLabel = computed(() => {
 })
 
 const backgroundStyle = computed(() => ({
-  // backgroundImage: `url(${IMAGE_BASE_URL}/${backgroundIndex.value}.gif)`,
-  backgroundImage: `url(${IMAGE_BASE_URL}2.png)`,
+  backgroundImage: `url(${IMAGE_BASE_URL}/${backgroundIndex.value})`,
+  // backgroundImage: `url(${IMAGE_BASE_URL}2.png)`,
 }))
 
 function rotateBackground() {
-  backgroundIndex.value = (backgroundIndex.value + 1) % 33
+  if (totalImages.value.length === 0) return
+  const randomIndex = Math.floor(Math.random() * totalImages.value.length)
+  backgroundIndex.value = totalImages.value[randomIndex].imageName
 }
 
 function resetForm() {
@@ -147,10 +149,12 @@ function switchToLogin() {
   showRegister.value = false
 }
 async function getTotalImages() {
-  http.get('/api/background').then((response) => {
-    totalImages.value = response.data.data
-    console.log(totalImages.value)
-  })
+  const response = await http.get('/api/background')
+  totalImages.value = response.data.data ?? []
+  if (totalImages.value.length > 0) {
+    const randomIndex = Math.floor(Math.random() * totalImages.value.length)
+    backgroundIndex.value = totalImages.value[randomIndex].imageName
+  }
 }
 
 onMounted(() => {

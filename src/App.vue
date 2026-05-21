@@ -151,7 +151,7 @@ function switchToLogin() {
   showRegister.value = false
 }
 async function getTotalImages() {
-  const response = await http.get('/api/background')
+  const response = await http.get('/api/background/all')
   totalImages.value = response.data.data ?? []
   if (totalImages.value.length > 0) {
     const randomIndex = Math.floor(Math.random() * totalImages.value.length)

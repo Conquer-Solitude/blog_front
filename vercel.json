@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://blogbackend-production-4844.up.railway.app/:path*"
+      "destination": "https://blog-backend-bsfs.onrender.com/:path*"
     }
   ]
   

@@ -43,14 +43,207 @@ function openGithub() {
           </p>
         </li>
         <li class="about-link">
-          <label class="about-navigation">---------我的个人导航---------</label>
+          <label class="about-navigation">—— 我的个人导航 ——</label>
         </li>
         <li class="about-self-link">
-          <div @click="openBili"><img :src="bilibiliUrl" alt="正在加载中" /></div>
-          <div @click="openGitee"><img :src="giteeUrl" alt="正在加载中" /></div>
-          <div @click="openGithub"><img :src="githubUrl" alt="正在加载中" /></div>
+          <div class="social-link" @click="openBili"><img :src="bilibiliUrl" alt="Bilibili" /></div>
+          <div class="social-link" @click="openGitee"><img :src="giteeUrl" alt="Gitee" /></div>
+          <div class="social-link" @click="openGithub"><img :src="githubUrl" alt="GitHub" /></div>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+<style scoped>
+.about-container {
+  margin: 0 auto;
+  max-width: 1240px;
+  min-height: calc(100vh - 100px);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 40px;
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+  border-radius: 0;
+}
+
+.about-left,
+.about-right {
+  width: 50%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-left {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.about-right {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 40px 30px;
+}
+
+.ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-avatar {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  display: block;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  object-fit: cover;
+}
+
+.about-avatar:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.about-avatar-image {
+  text-align: center;
+}
+
+.about-name {
+  width: 280px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(245,245,245,0.9));
+  border-radius: 50px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.about-name:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.about-name img {
+  width: 100%;
+  height: 50px;
+  object-fit: cover;
+  display: block;
+  border-radius: 25px;
+}
+
+.about-introduce {
+  width: 100%;
+}
+
+.about-title {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #4a4a4a;
+  letter-spacing: 2px;
+}
+
+.about-introduce-content {
+  text-indent: 2em;
+  margin: 0 0 30px;
+  text-align: left;
+  line-height: 2;
+  font-size: 16px;
+  color: #5c4b37;
+}
+
+.about-link {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.about-navigation {
+  font-size: 16px;
+  color: #8b7355;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+.about-self-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.social-link {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.social-link:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.social-link img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about-left,
+  .about-right {
+    width: 100%;
+  }
+}
+</style>

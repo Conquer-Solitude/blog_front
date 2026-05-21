@@ -1,5 +1,6 @@
 ﻿<script setup>
 import { onBeforeUnmount, onMounted, ref, computed } from 'vue'
+import { ElMessage } from 'element-plus'
 import http from '@/api/http'
 
 const content = ref('')
@@ -42,12 +43,12 @@ async function submitTreehole() {
   const userId = localStorage.getItem('userId')
 
   if (content.value === '') {
-    alert('请输入内容')
+    ElMessage.warning('请输入内容')
     return
   }
 
   if (userId == null) {
-    alert('请先登录')
+    ElMessage.warning('请先登录')
     content.value = ''
     return
   }
@@ -63,10 +64,10 @@ async function submitTreehole() {
 
   try {
     const response = await http.post('/api/treehole/add', payload)
-    alert(response.data.data)
+    ElMessage.success(response.data.data)
   } catch (error) {
     console.error('Failed to submit treehole:', error)
-    alert('提交失败，请重试')
+    ElMessage.error('提交失败，请重试')
   }
 }
 

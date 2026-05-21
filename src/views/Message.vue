@@ -1,5 +1,6 @@
 ﻿<script setup>
 import { onMounted, ref } from 'vue'
+import { ElMessage } from 'element-plus'
 import http from '@/api/http'
 
 const content = ref('')
@@ -24,12 +25,12 @@ async function fetchMessages() {
 
 async function submitMessage() {
   if (content.value.trim() === '') {
-    alert('请输入留言')
+    ElMessage.warning('请输入留言')
     return
   }
 
   if (currentUserId.value == null) {
-    alert('请先登录')
+    ElMessage.warning('请先登录')
     content.value = ''
     return
   }
@@ -43,15 +44,15 @@ async function submitMessage() {
     console.log('Submit response:', response.data)
     
     if (response.data.data === true) {
-      alert('留言成功')
+      ElMessage.success('留言成功')
       content.value = ''
       await fetchMessages()
     } else {
-      alert(response.data.message || '留言失败')
+      ElMessage.error(response.data.message || '留言失败')
     }
   } catch (error) {
     console.error('Failed to submit message:', error)
-    alert('提交失败，请检查网络连接')
+    ElMessage.error('提交失败，请检查网络连接')
   }
 }
 

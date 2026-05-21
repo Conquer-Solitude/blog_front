@@ -50,3 +50,34 @@ const onClose = () => {}
     </div>
   </div>
 </template>
+
+<style scoped>
+.articel-container {
+  max-width: 1240px;
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  gap: 16px;
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+}
+
+.article-menu {
+  width: 200px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.article-content {
+  flex: 1;
+  min-width: 0;
+}
+</style>

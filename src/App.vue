@@ -8,14 +8,19 @@ import FooterBar from '@/components/FooterBar.vue'
 import { IMAGE_BASE_URL } from '@/constants'
 
 const router = useRouter()
-const totalImages = ref([])
+const bgImages = ref([])
 const showRegister = ref(false)
 const showLoginModal = ref(false)
 const email = ref('')
 const password = ref('')
 const code = ref('')
 const countdown = ref(0)
-const backgroundIndex = ref('2.png')
+const layer1Image = ref('2.png')
+const layer2Image = ref('')
+const activeLayer = ref(1)
+const isLoading = ref(false)
+const SWITCH_INTERVAL = 15000
+const TRANSITION_DURATION = 1500
 
 let backgroundTimer = null
 let countdownTimer = null
@@ -25,17 +30,58 @@ const loginLabel = computed(() => {
   return userName == null ? '登录' : `${userName.slice(0, 1)}***`
 })
 
-const backgroundStyle = computed(() => ({
-  backgroundImage: `url(${IMAGE_BASE_URL}/${backgroundIndex.value})`,
-  // backgroundImage: `url(${IMAGE_BASE_URL}2.png)`,
+const layer1Style = computed(() => ({
+  backgroundImage: `url(${IMAGE_BASE_URL}/${layer1Image.value})`,
+  opacity: activeLayer.value === 1 ? 1 : 0,
 }))
 
-function rotateBackground() {
-  if (totalImages.value.length === 0) return
-  const randomIndex = Math.floor(Math.random() * totalImages.value.length)
-  backgroundIndex.value = totalImages.value[randomIndex].imageName
-  console.log(backgroundIndex.value)
-  console.log("backgroundImage"+backgroundImage)
+const layer2Style = computed(() => ({
+  backgroundImage: `url(${IMAGE_BASE_URL}/${layer2Image.value})`,
+  opacity: activeLayer.value === 2 ? 1 : 0,
+}))
+
+function getRandomImage(excludeName = '') {
+  if (bgImages.value.length <= 1) return bgImages.value[0]?.imageName
+  let name
+  do {
+    const idx = Math.floor(Math.random() * bgImages.value.length)
+    name = bgImages.value[idx].imageName
+  } while (name === excludeName)
+  return name
+}
+
+function preloadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(url)
+    img.onerror = () => reject(new Error(`Failed to load: ${url}`))
+    img.src = url
+  })
+}
+
+async function rotateBackground() {
+  if (bgImages.value.length === 0 || isLoading.value) return
+  isLoading.value = true
+
+  const currentImage = activeLayer.value === 1 ? layer1Image.value : layer2Image.value
+  const nextName = getRandomImage(currentImage)
+  const nextUrl = `${IMAGE_BASE_URL}/${nextName}`
+
+  try {
+    await preloadImage(nextUrl)
+
+    if (activeLayer.value === 1) {
+      layer2Image.value = nextName
+      activeLayer.value = 2
+    } else {
+      layer1Image.value = nextName
+      activeLayer.value = 1
+    }
+  } catch (err) {
+    console.error('背景图片预加载失败:', nextUrl, err)
+  } finally {
+    isLoading.value = false
+  }
 }
 
 function resetForm() {
@@ -152,17 +198,22 @@ function switchToLogin() {
 }
 async function getTotalImages() {
   const response = await http.get('/api/background/all')
-  totalImages.value = response.data.data ?? []
-  if (totalImages.value.length > 0) {
-    const randomIndex = Math.floor(Math.random() * totalImages.value.length)
-    backgroundIndex.value = totalImages.value[randomIndex].imageName
-    console.log(backgroundIndex.value)
+  bgImages.value = response.data.data ?? []
+
+  if (bgImages.value.length > 0) {
+    const first = getRandomImage()
+    layer1Image.value = first
+
+    if (bgImages.value.length > 1) {
+      const second = getRandomImage(first)
+      layer2Image.value = second
+    }
   }
 }
 
 onMounted(() => {
-  backgroundTimer = window.setInterval(rotateBackground, 8000)
   getTotalImages()
+  backgroundTimer = window.setInterval(rotateBackground, SWITCH_INTERVAL)
 })
 
 onBeforeUnmount(() => {
@@ -178,7 +229,9 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <div class="background" :style="backgroundStyle">
+    <div class="background">
+      <div class="bg-layer" :style="layer1Style"></div>
+      <div class="bg-layer" :style="layer2Style"></div>
       <ComponentHeader />
       <div class="login" @click="handleLoginEntry">{{ loginLabel }}</div>
       <div v-show="showLoginModal" class="login-overlay" @click.self="resetForm">
@@ -431,5 +484,18 @@ onBeforeUnmount(() => {
   border-color: #d4a574;
   background: rgba(212, 165, 116, 0.08);
   color: #5c4b37;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  transition: opacity 1.5s ease-in-out;
 }
 </style>

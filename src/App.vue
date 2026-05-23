@@ -36,7 +36,7 @@ const layer1Style = computed(() => ({
 }))
 
 const layer2Style = computed(() => ({
-  backgroundImage: `url(${IMAGE_BASE_URL}/${layer2Image.value})`,
+  backgroundImage: `url(${IMAGE_BASE_URL}${layer2Image.value})`,
   opacity: activeLayer.value === 2 ? 1 : 0,
 }))
 

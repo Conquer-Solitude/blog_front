@@ -19,7 +19,7 @@ const layer1Image = ref('2.png')
 const layer2Image = ref('')
 const activeLayer = ref(1)
 const isLoading = ref(false)
-const SWITCH_INTERVAL = 15000
+const SWITCH_INTERVAL = 20000
 const TRANSITION_DURATION = 1500
 
 let backgroundTimer = null

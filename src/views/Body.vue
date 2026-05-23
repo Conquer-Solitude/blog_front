@@ -347,13 +347,11 @@ onBeforeUnmount(() => {
 .about .self::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
   pointer-events: none;
   z-index: 1;
+  border-radius: 16px;
 }
 
 .about .myAvatar {

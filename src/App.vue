@@ -31,8 +31,13 @@ const loginLabel = computed(() => {
 })
 
 const layer1Style = computed(() => ({
-  backgroundImage: `url(${IMAGE_BASE_URL}/${layer1Image.value})`,
+  backgroundImage: `url(${IMAGE_BASE_URL}${layer1Image.value})`,
   opacity: activeLayer.value === 1 ? 1 : 0,
+}))
+
+const layer2Style = computed(() => ({
+  backgroundImage: `url(${IMAGE_BASE_URL}${layer2Image.value})`,
+  opacity: activeLayer.value === 2 ? 1 : 0,
 }))
 
 const layer2Style = computed(() => ({
@@ -65,7 +70,7 @@ async function rotateBackground() {
 
   const currentImage = activeLayer.value === 1 ? layer1Image.value : layer2Image.value
   const nextName = getRandomImage(currentImage)
-  const nextUrl = `${IMAGE_BASE_URL}/${nextName}`
+  const nextUrl = `${IMAGE_BASE_URL}${nextName}`
 
   try {
     await preloadImage(nextUrl)
@@ -77,6 +82,9 @@ async function rotateBackground() {
       layer1Image.value = nextName
       activeLayer.value = 1
     }
+
+    const currentUrl = `${IMAGE_BASE_URL}${nextName}`
+    console.log('[Background] switched to:', currentUrl)
   } catch (err) {
     console.error('背景图片预加载失败:', nextUrl, err)
   } finally {

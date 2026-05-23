@@ -145,19 +145,21 @@ async function sendCode() {
     return
   }
 
+  // 立即启动倒计时，不等接口返回，提升交互丝滑度
+  if (countdownTimer) clearInterval(countdownTimer)
+  countdown.value = 60
+  countdownTimer = window.setInterval(() => {
+    if (countdown.value > 0) {
+      countdown.value -= 1
+    } else {
+      clearInterval(countdownTimer)
+      countdownTimer = null
+    }
+  }, 1000)
+
   try {
     const response = await http.post('/api/send', { email: email.value })
     ElMessage.success(response.data.data)
-
-    countdown.value = 60
-    countdownTimer = window.setInterval(() => {
-      if (countdown.value > 0) {
-        countdown.value -= 1
-      } else {
-        clearInterval(countdownTimer)
-        countdownTimer = null
-      }
-    }, 1000)
   } catch (error) {
     ElMessage.error(error?.response?.data?.data ?? '发送验证码失败，请稍后重试')
     console.error(error)

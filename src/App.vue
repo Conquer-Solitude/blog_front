@@ -40,11 +40,6 @@ const layer2Style = computed(() => ({
   opacity: activeLayer.value === 2 ? 1 : 0,
 }))
 
-const layer2Style = computed(() => ({
-  backgroundImage: `url(${IMAGE_BASE_URL}${layer2Image.value})`,
-  opacity: activeLayer.value === 2 ? 1 : 0,
-}))
-
 function getRandomImage(excludeName = '') {
   if (bgImages.value.length <= 1) return bgImages.value[0]?.imageName
   let name

@@ -10,6 +10,7 @@ const type = ref(1)
 const articleUrl = ref('')
 const coverId = ref(-1)
 const uploadRef = ref(null)
+const bgUploadRef = ref(null)
 
 const headers = computed(() => ({
   Authorization: localStorage.getItem('token') || null,
@@ -61,6 +62,14 @@ function handleCoverSuccess(response) {
 function handleVideoSuccess(response) {
   articleUrl.value = response.data
   ElMessage.success(response.data)
+}
+
+function handleBgSuccess(response) {
+  ElMessage.success(response.data || '背景图片上传成功')
+}
+
+function submitBg() {
+  bgUploadRef.value?.submit()
 }
 </script>
 
@@ -139,6 +148,26 @@ function handleVideoSuccess(response) {
         >
           <el-icon class="el-icon--upload"><UploadFilled /></el-icon>
           <div class="el-upload__text">将视频拖拽至此,或者 <em>点击此处上传文件</em></div>
+        </el-upload>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">上传背景图片</label>
+        <el-upload
+          ref="bgUploadRef"
+          class="upload-demo"
+          action="/api/background/upload"
+          :auto-upload="false"
+          :limit="1"
+          accept=".jpg,.png,.jpeg,.webp"
+          method="POST"
+          :headers="headers"
+          @success="handleBgSuccess"
+        >
+          <template #trigger>
+            <el-button type="primary">选择文件</el-button>
+          </template>
+          <el-button class="ml-3" type="success" @click="submitBg">上传背景</el-button>
         </el-upload>
       </div>
 

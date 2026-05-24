@@ -159,7 +159,7 @@ async function sendCode() {
 
   try {
     const response = await http.post('/api/send', { email: email.value })
-    ElMessage.success(response.data.data)
+    ElMessage.success("邮件发送成功,请注意查收")
   } catch (error) {
     ElMessage.error(error?.response?.data?.data ?? '发送验证码失败，请稍后重试')
     console.error(error)

@@ -10,7 +10,8 @@ const items = ref([])
 
 async function fetchAll() {
   const response = await http.get('api/article/all')
-  items.value = response.data.data ?? []
+  const data = response.data.data ?? []
+  items.value = data.sort((a, b) => new Date(b.createTime) - new Date(a.createTime))
 }
 
 function openVideo(article) {

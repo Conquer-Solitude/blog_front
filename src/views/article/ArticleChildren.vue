@@ -16,7 +16,8 @@ async function fetchArticles() {
   }
 
   const response = await http.get(`/api/article/type/${id}`)
-  list.value = response.data.data ?? []
+  const data = response.data.data ?? []
+  list.value = data.sort((a, b) => new Date(b.createTime) - new Date(a.createTime))
 }
 
 function openVideo(article) {

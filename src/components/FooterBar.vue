@@ -8,9 +8,8 @@
       </ul>
       <ul>
         <li><h2>联系我：</h2></li>
-        <li>3388659470@qq.com</li>
+        <li>cosolitude@qq.com</li>
         <li>conquersolitude@gmail.com</li>
-        <li>13980534095@163.com</li>
       </ul>
     </div>
   </div>

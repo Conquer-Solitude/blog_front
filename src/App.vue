@@ -201,6 +201,10 @@ function switchToRegister() {
 function switchToLogin() {
   showRegister.value = false
 }
+function scrollToContent() {
+  window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+}
+
 async function getTotalImages() {
   const response = await http.get('/api/background/all')
   bgImages.value = response.data.data ?? []
@@ -292,6 +296,14 @@ onBeforeUnmount(() => {
         class="wave waveBottom bgBottom"
         style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"
       ></div>
+      <div class="scroll-hint" @click="scrollToContent">
+        <div class="scroll-hint-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </div>
+        <span class="scroll-hint-text">向下滚动</span>
+      </div>
     </div>
     <RouterView />
     <FooterBar />
@@ -502,5 +514,68 @@ onBeforeUnmount(() => {
   background-position: bottom;
   background-attachment: fixed;
   transition: opacity 1.5s ease-in-out;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: scrollHintFloat 2.5s ease-in-out infinite;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-hint:hover {
+  opacity: 0.85;
+}
+
+.scroll-hint-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.scroll-hint-icon svg {
+  width: 22px;
+  height: 22px;
+  color: rgba(255, 255, 255, 0.95);
+  stroke-width: 2.5;
+}
+
+.scroll-hint-icon:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.08);
+}
+
+.scroll-hint-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes scrollHintFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(14px);
+  }
 }
 </style>

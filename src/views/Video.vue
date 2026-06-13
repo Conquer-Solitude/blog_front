@@ -138,6 +138,18 @@ onMounted(fetchComments)
   padding: 32px 20px;
   min-height: calc(100vh - 100px);
   background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Video Card ── */
@@ -528,6 +540,16 @@ onMounted(fetchComments)
 
   .comment-submit-btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-card {
+    padding: 12px;
+  }
+
+  .section-title {
+    font-size: 16px;
   }
 }
 </style>

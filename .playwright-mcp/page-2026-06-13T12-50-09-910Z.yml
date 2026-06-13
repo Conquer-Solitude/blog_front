@@ -1,0 +1,72 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e8]:
+      - heading "Conquer_Solitude" [level=3] [ref=e9]
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "首页" [ref=e12] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e13]:
+          - link "动态" [ref=e14] [cursor=pointer]:
+            - /url: /timeline
+        - listitem [ref=e15]:
+          - link "文章" [ref=e16] [cursor=pointer]:
+            - /url: /article
+        - listitem [ref=e17]:
+          - link "树洞" [ref=e18] [cursor=pointer]:
+            - /url: /hole
+        - listitem [ref=e19]:
+          - link "留言" [ref=e20] [cursor=pointer]:
+            - /url: /message
+        - listitem [ref=e21]:
+          - link "关于" [ref=e22] [cursor=pointer]:
+            - /url: /about
+    - generic [ref=e23]: 登录
+    - generic [ref=e27] [cursor=pointer]:
+      - img [ref=e29]
+      - generic [ref=e31]: 向下滚动
+  - generic [ref=e32]:
+    - generic [ref=e34]:
+      - heading "最新动态>>>" [level=2] [ref=e35]
+      - separator [ref=e36]
+    - list [ref=e37]:
+      - listitem [ref=e38]:
+        - img "正在加载中" [ref=e40]
+        - generic [ref=e41]: CoSolitude
+        - generic [ref=e42]: 庸碌者身陷人际关系的囚牢，而清醒者只与自己赛跑
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - paragraph [ref=e45]: "0"
+            - paragraph [ref=e46]: 文章数
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: "0"
+            - paragraph [ref=e49]: 评论数
+        - generic [ref=e50]:
+          - link "码云" [ref=e51] [cursor=pointer]:
+            - /url: https://gitee.com/happy-state
+            - img "码云" [ref=e52]
+          - link "steam" [ref=e53] [cursor=pointer]:
+            - /url: https://steamcommunity.com/profiles/76561199528374631/
+            - img "steam" [ref=e54]
+          - link "github" [ref=e55] [cursor=pointer]:
+            - /url: https://github.com/Conquer-Solitude
+            - img "github" [ref=e56]
+      - listitem [ref=e57]:
+        - text: “ 每日鸡汤
+        - img "换一换" [ref=e58] [cursor=pointer]
+        - paragraph
+      - listitem [ref=e59]:
+        - generic [ref=e60]: 电子时钟
+        - generic [ref=e61]: 2026年06月13日
+        - generic [ref=e62]: 20:50:09
+  - generic [ref=e64]:
+    - img "qq扫一扫" [ref=e65]
+    - list [ref=e66]:
+      - listitem [ref=e67]:
+        - heading "@Conquer_Solitude" [level=2] [ref=e68]
+      - listitem [ref=e69]: 备案号：不告诉你
+    - list [ref=e70]:
+      - listitem [ref=e71]:
+        - heading "联系我：" [level=2] [ref=e72]
+      - listitem [ref=e73]: ✉ cosolitude@qq.com
+      - listitem [ref=e74]: ✉ conquersolitude@gmail.com

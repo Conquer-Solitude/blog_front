@@ -202,4 +202,34 @@ watch(() => route.query.id, fetchArticles, { immediate: true })
 .article-container::-webkit-scrollbar-thumb:hover {
   background: rgba(160, 146, 126, 0.5);
 }
+
+/* ── Entrance animation ── */
+.article-container {
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .article-container {
+    height: auto;
+    min-height: 400px;
+    max-height: none;
+    padding: 20px 16px;
+  }
+
+  .article-page-title {
+    font-size: 20px;
+  }
+}
 </style>

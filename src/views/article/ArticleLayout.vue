@@ -10,9 +10,10 @@ const onClose = () => {}
 <template>
   <div class="articel-container">
     <div class="article-menu">
-      <el-radio-group style="margin-bottom: 20px">
-        <el-radio-button>目录</el-radio-button>
-      </el-radio-group>
+      <div class="menu-heading">
+        <span class="menu-heading-accent"></span>
+        <h3 class="menu-heading-text">文章目录</h3>
+      </div>
 
       <el-menu
         default-active="2"
@@ -61,6 +62,18 @@ const onClose = () => {}
   gap: 16px;
   background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
   position: relative;
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .articel-container::before {
@@ -94,6 +107,31 @@ const onClose = () => {}
   transition: all 0.3s ease;
 }
 
+.menu-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.menu-heading-accent {
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  flex-shrink: 0;
+}
+
+.menu-heading-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
 .article-menu::before {
   content: '';
   position: absolute;
@@ -111,37 +149,6 @@ const onClose = () => {}
   min-width: 0;
   position: relative;
   z-index: 1;
-}
-
-/* ── Radio group styling ── */
-.article-menu :deep(.el-radio-group) {
-  display: flex;
-  width: 100%;
-  margin-bottom: 16px !important;
-}
-
-.article-menu :deep(.el-radio-button__inner) {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(0, 0, 0, 0.06) !important;
-  color: #5c4b37;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 14px;
-  padding: 8px 16px;
-  transition: all 0.3s ease;
-  border-radius: 8px !important;
-}
-
-.article-menu :deep(.el-radio-button__original-radio:checked + .el-radio-button__inner) {
-  background: linear-gradient(135deg, #667eea, #764ba2) !important;
-  border-color: transparent !important;
-  color: #fff !important;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-}
-
-.article-menu :deep(.el-radio-button__inner:hover) {
-  color: #667eea;
-  background: rgba(102, 126, 234, 0.06);
 }
 
 /* ── Menu styling ── */
@@ -247,5 +254,23 @@ const onClose = () => {}
 
 .article-menu :deep(.el-sub-menu.is-active .el-sub-menu__title) {
   color: #667eea !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .articel-container {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .article-menu {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .article-menu :deep(.el-menu-vertical-demo:not(.el-menu--collapse)) {
+    width: 100%;
+    min-height: auto;
+  }
 }
 </style>

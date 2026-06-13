@@ -1,0 +1,94 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e8]:
+      - heading "Conquer_Solitude" [level=3] [ref=e9]
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "首页" [ref=e12] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e13]:
+          - link "动态" [ref=e14] [cursor=pointer]:
+            - /url: /timeline
+        - listitem [ref=e15]:
+          - link "文章" [ref=e16] [cursor=pointer]:
+            - /url: /article
+        - listitem [ref=e17]:
+          - link "树洞" [ref=e18] [cursor=pointer]:
+            - /url: /hole
+        - listitem [ref=e19]:
+          - link "留言" [ref=e20] [cursor=pointer]:
+            - /url: /message
+        - listitem [ref=e21]:
+          - link "关于" [ref=e22] [cursor=pointer]:
+            - /url: /about
+    - generic [ref=e23]: 登录
+    - generic [ref=e27] [cursor=pointer]:
+      - img [ref=e29]
+      - generic [ref=e31]: 向下滚动
+  - generic [ref=e33]:
+    - generic [ref=e34]:
+      - heading "发布内容" [level=2] [ref=e35]
+      - paragraph [ref=e36]: 填写信息并上传资源
+    - generic [ref=e38]:
+      - generic [ref=e39]: 标题
+      - textbox "请输入标题" [ref=e40]
+    - generic [ref=e41]:
+      - generic [ref=e42]: 内容简介
+      - textbox "请输入内容简介" [ref=e43]
+    - generic [ref=e44]:
+      - generic [ref=e45]: 类型选择
+      - generic [ref=e46]:
+        - generic [ref=e47] [cursor=pointer]:
+          - radio "生活" [checked] [ref=e48]
+          - generic [ref=e49]: 生活
+        - generic [ref=e50] [cursor=pointer]:
+          - radio "数据结构" [ref=e51]
+          - generic [ref=e52]: 数据结构
+        - generic [ref=e53] [cursor=pointer]:
+          - radio "技术" [ref=e54]
+          - generic [ref=e55]: 技术
+    - generic [ref=e56]:
+      - generic [ref=e57]: 上传视频封面
+      - generic [ref=e59]:
+        - button "选择封面图片 支持 JPG、PNG 格式" [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]:
+            - img [ref=e62]
+            - generic [ref=e65]: 选择封面图片
+            - generic [ref=e66]: 支持 JPG、PNG 格式
+        - button "上传文件" [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]: 上传文件
+        - list
+    - generic [ref=e69]:
+      - generic [ref=e70]: 上传视频
+      - generic [ref=e72]:
+        - button "将视频拖拽至此，或者 点击此处上传文件 支持 MP4、MP3 格式" [ref=e73] [cursor=pointer]:
+          - generic [ref=e75]:
+            - img [ref=e76]
+            - generic [ref=e79]:
+              - text: 将视频拖拽至此，或者
+              - emphasis [ref=e80]: 点击此处上传文件
+            - generic [ref=e81]: 支持 MP4、MP3 格式
+        - list
+    - generic [ref=e82]:
+      - generic [ref=e83]: 上传背景图片
+      - generic [ref=e85]:
+        - button "选择背景图片 支持 JPG、PNG、WebP 格式" [ref=e86] [cursor=pointer]:
+          - generic [ref=e87]:
+            - img [ref=e88]
+            - generic [ref=e91]: 选择背景图片
+            - generic [ref=e92]: 支持 JPG、PNG、WebP 格式
+        - button "上传背景" [ref=e93] [cursor=pointer]:
+          - generic [ref=e94]: 上传背景
+        - list
+    - generic [ref=e95] [cursor=pointer]: 提交
+  - generic [ref=e97]:
+    - img "qq扫一扫" [ref=e98]
+    - list [ref=e99]:
+      - listitem [ref=e100]:
+        - heading "@Conquer_Solitude" [level=2] [ref=e101]
+      - listitem [ref=e102]: 备案号：不告诉你
+    - list [ref=e103]:
+      - listitem [ref=e104]:
+        - heading "联系我：" [level=2] [ref=e105]
+      - listitem [ref=e106]: ✉ cosolitude@qq.com
+      - listitem [ref=e107]: ✉ conquersolitude@gmail.com

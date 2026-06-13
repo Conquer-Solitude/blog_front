@@ -67,6 +67,18 @@ onMounted(fetchAll)
   min-height: calc(100vh - 100px);
   background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
   position: relative;
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .timeline-page::before {
@@ -281,5 +293,29 @@ onMounted(fetchAll)
   line-height: 1.7;
   color: #5c4b37;
   text-indent: 2em;
+}
+
+@media (max-width: 768px) {
+  .timeline-page {
+    padding: 24px 12px;
+  }
+
+  .timeline-heading {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .timeline-card-body {
+    flex-direction: column;
+  }
+
+  .timeline-img {
+    width: 100%;
+    height: 160px;
+  }
+
+  .timeline-card {
+    padding: 16px;
+  }
 }
 </style>

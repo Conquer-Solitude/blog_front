@@ -28,6 +28,15 @@ console.log(qqUrl)
   border-radius: 20px 20px 0 0;
   padding: 40px 30px;
   gap: 40px;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .footer::before {
@@ -127,5 +136,25 @@ console.log(qqUrl)
   font-size: 13px;
   color: #a0927e;
   opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 30px 20px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .footer img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .footer ul li h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 </style>

@@ -149,42 +149,97 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="holeRef" class="hole">
-    <!-- 弹幕层 -->
-    <div class="danmaku-layer">
-      <transition-group name="danmaku">
-        <div
-          v-for="item in activeDanmaku"
-          :key="item.id"
-          class="danmaku-item"
-          :style="{
-            top: `${item.top}px`,
-            '--duration': `${item.duration}s`,
-            '--bg-color': item.colorScheme.bg,
-            '--border-color': item.colorScheme.border,
-            '--shadow-color': item.colorScheme.shadow,
-          }"
-        >
-          <span class="danmaku-text">{{ item.content }}</span>
-        </div>
-      </transition-group>
+  <div class="treehole-page">
+    <div class="treehole-header">
+      <h2 class="treehole-heading">树洞</h2>
+      <p class="treehole-subtitle">匿名倾诉，自由飞翔</p>
+      <div class="treehole-divider"></div>
     </div>
+    <div ref="holeRef" class="hole">
+      <!-- 弹幕层 -->
+      <div class="danmaku-layer">
+        <transition-group name="danmaku">
+          <div
+            v-for="item in activeDanmaku"
+            :key="item.id"
+            class="danmaku-item"
+            :style="{
+              top: `${item.top}px`,
+              '--duration': `${item.duration}s`,
+              '--bg-color': item.colorScheme.bg,
+              '--border-color': item.colorScheme.border,
+              '--shadow-color': item.colorScheme.shadow,
+            }"
+          >
+            <span class="danmaku-text">{{ item.content }}</span>
+          </div>
+        </transition-group>
+      </div>
 
-    <!-- 输入层 -->
-    <div class="submit">
-      <input
-        v-model="content"
-        class="input-type"
-        type="text"
-        placeholder="在这里留下自己的足迹吧（*＾3＾）/～☆"
-        maxlength="50"
-      />
-      <button class="button" @click="submitTreehole">提交</button>
+      <!-- 输入层 -->
+      <div class="submit">
+        <input
+          v-model="content"
+          class="input-type"
+          type="text"
+          placeholder="在这里留下自己的足迹吧（*＾3＾）/～☆"
+          maxlength="50"
+        />
+        <button class="button" @click="submitTreehole">提交</button>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.treehole-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: calc(100vh - 100px);
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.treehole-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.treehole-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4a4a4a;
+  margin: 0 0 8px;
+  letter-spacing: 4px;
+}
+
+.treehole-subtitle {
+  font-size: 15px;
+  color: #8b7355;
+  margin: 0 0 16px;
+  letter-spacing: 2px;
+}
+
+.treehole-divider {
+  width: 60px;
+  height: 4px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .hole {
   position: relative;
   width: 100%;
@@ -333,5 +388,44 @@ onBeforeUnmount(() => {
 
 .button:active {
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .treehole-page {
+    padding: 24px 12px;
+  }
+
+  .treehole-heading {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .treehole-subtitle {
+    font-size: 13px;
+  }
+
+  .hole {
+    height: 500px;
+    border-radius: 12px;
+  }
+
+  .submit {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border-radius: 20px;
+    width: calc(100% - 32px);
+  }
+
+  .input-type {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .button {
+    width: 100%;
+    height: 40px;
+  }
 }
 </style>

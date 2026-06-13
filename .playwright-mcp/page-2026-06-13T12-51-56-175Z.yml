@@ -1,0 +1,53 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e8]:
+      - heading "Conquer_Solitude" [level=3] [ref=e9]
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "首页" [ref=e12] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e13]:
+          - link "动态" [ref=e14] [cursor=pointer]:
+            - /url: /timeline
+        - listitem [ref=e15]:
+          - link "文章" [ref=e16] [cursor=pointer]:
+            - /url: /article
+        - listitem [ref=e17]:
+          - link "树洞" [ref=e18] [cursor=pointer]:
+            - /url: /hole
+        - listitem [ref=e19]:
+          - link "留言" [ref=e20] [cursor=pointer]:
+            - /url: /message
+        - listitem [ref=e21]:
+          - link "关于" [ref=e22] [cursor=pointer]:
+            - /url: /about
+    - generic [ref=e23]: 登录
+    - generic [ref=e27] [cursor=pointer]:
+      - img [ref=e29]
+      - generic [ref=e31]: 向下滚动
+  - generic [ref=e32]:
+    - list [ref=e34]:
+      - listitem [ref=e35]:
+        - img "正在加载中" [ref=e36]
+      - listitem [ref=e37]:
+        - img "正在加载中" [ref=e38]
+    - list [ref=e40]:
+      - listitem [ref=e41]:
+        - heading "一名中二的后端开发工程师" [level=2] [ref=e42]
+        - paragraph [ref=e43]: 大家好我是 CoSolitude，一名后端程序员。 平日里热爱钻研算法、持续学习各类新技术，也喜欢用文字记录生活点滴。 业余时间喜欢玩 CS，闲暇之余习惯听歌放松，在代码、爱好与日常里慢慢成长，温柔且自律
+      - listitem [ref=e44]: —— 我的个人导航 ——
+      - listitem [ref=e45]:
+        - img "Bilibili" [ref=e47] [cursor=pointer]
+        - img "Gitee" [ref=e49] [cursor=pointer]
+        - img "GitHub" [ref=e51] [cursor=pointer]
+  - generic [ref=e53]:
+    - img "qq扫一扫" [ref=e54]
+    - list [ref=e55]:
+      - listitem [ref=e56]:
+        - heading "@Conquer_Solitude" [level=2] [ref=e57]
+      - listitem [ref=e58]: 备案号：不告诉你
+    - list [ref=e59]:
+      - listitem [ref=e60]:
+        - heading "联系我：" [level=2] [ref=e61]
+      - listitem [ref=e62]: ✉ cosolitude@qq.com
+      - listitem [ref=e63]: ✉ conquersolitude@gmail.com

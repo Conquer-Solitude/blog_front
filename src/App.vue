@@ -578,4 +578,28 @@ onBeforeUnmount(() => {
     transform: translateX(-50%) translateY(14px);
   }
 }
+
+/* ── Login button over hero ── */
+.background .login {
+  position: absolute;
+  right: calc(50% - 600px);
+  top: 26px;
+  transform: none;
+  z-index: 101;
+}
+
+@media (max-width: 1280px) {
+  .background .login {
+    right: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .background .login {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 8px auto;
+  }
+}
 </style>

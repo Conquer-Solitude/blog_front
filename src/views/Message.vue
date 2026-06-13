@@ -193,6 +193,18 @@ export { stringToColor, maskUsername }
   min-height: calc(100vh - 100px);
   padding: 40px 20px;
   background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 页面头部 */
@@ -601,6 +613,38 @@ export { stringToColor, maskUsername }
   
   .board-title {
     font-size: 32px;
+    letter-spacing: 4px;
+  }
+
+  .board-subtitle {
+    font-size: 14px;
+  }
+
+  .message-board {
+    padding: 24px 12px;
+  }
+
+  .messages-section {
+    padding: 20px;
+  }
+
+  .input-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .board-title {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+
+  .submit-btn-modern {
+    padding: 8px 16px;
+  }
+
+  .message-card {
+    padding: 14px;
   }
 }
 </style>

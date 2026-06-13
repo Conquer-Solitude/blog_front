@@ -1,0 +1,24 @@
+[     519ms] [LOG] https://pub-41822fd5bdc845a69bd37104e547c5ce.r2.dev/image/qq.jpg @ http://localhost:5173/src/components/FooterBar.vue:8
+[     592ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[     607ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/background/all:0
+[     681ms] AxiosError: Request failed with status code 500
+    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1426:12)
+    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1827:7)
+[     761ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/article/latest:0
+[     762ms] [ERROR] Failed to fetch latest articles: AxiosError: Request failed with status code 500
+    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1426:12)
+    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1827:7) @ http://localhost:5173/src/views/Body.vue:32
+[     763ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/article/nums:0
+[     763ms] [ERROR] Failed to fetch article count: AxiosError: Request failed with status code 500
+    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1426:12)
+    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=4881cdc4:1827:7) @ http://localhost:5173/src/views/Body.vue:42
+[    2170ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://yy.kuailemao.xyz/?c=a&c=j&encode=json:0
+[    2170ms] [WARNING] Failed to fetch quote: TypeError: Failed to fetch
+    at fetchQuote (http://localhost:5173/src/views/Body.vue:50:28)
+    at http://localhost:5173/src/views/Body.vue:96:3
+    at http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:5291:40
+    at callWithErrorHandling (http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:2372:19)
+    at callWithAsyncErrorHandling (http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:2379:17)
+    at hook.__weh.hook.__weh (http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:5271:19)
+    at flushPostFlushCbs (http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:2557:28)
+    at flushJobs (http://localhost:5173/node_modules/.vite/deps/chunk-UC4PQXLF.js?v=4881cdc4:2599:5) @ http://localhost:5173/src/views/Body.vue:58

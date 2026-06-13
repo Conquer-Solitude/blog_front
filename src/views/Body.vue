@@ -101,21 +101,21 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="bodycontent">
+  <div class="bodycontent page-enter">
     <div class="content">
       <div class="latest">
         <h2 style="font-weight: 800">最新动态&gt;&gt;&gt;</h2>
         <hr style="margin-top: 5px" />
         <div
-          v-for="article in latestArticles"
+          v-for="(article, index) in latestArticles"
           :key="article.id"
           class="article"
+          :style="{ animationDelay: `${index * 0.08}s` }"
           @click="openVideo(article)"
         >
           <div class="image">
             <img
               :src="articleCoverBase + article.cover"
-              style="border-radius: 10px"
               alt="正在加载中"
               :title="article.title"
             />
@@ -248,6 +248,7 @@ onBeforeUnmount(() => {
     0 4px 20px rgba(0, 0, 0, 0.06),
     0 1px 4px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
+  animation: fadeInUp 0.4s ease both;
 }
 
 .article:hover {
@@ -537,5 +538,52 @@ onBeforeUnmount(() => {
   font-weight: 700;
   letter-spacing: 3px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .bodycontent {
+    flex-direction: column;
+    padding: 0 12px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .latest {
+    width: 100%;
+    margin: 16px auto 0;
+    padding: 16px;
+  }
+
+  .about {
+    width: 100%;
+  }
+
+  .about li {
+    width: 100%;
+  }
+
+  .article {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .article .image {
+    height: 180px;
+    width: 100%;
+  }
 }
 </style>
